@@ -133,6 +133,7 @@ if __name__ == "__main__":
             a = Q_object.e_greedy_policy(s, episode + 1, 'train')
             sp, r, done, info = env.step(np.array(a))
             done_p = False if t == max_episode_steps else done
+            done = True if t == max_episode_steps else done
             episodic_rewards += r
             t += 1
             Q_object.buffer_object.append(s, a, r, done_p, sp)
